@@ -18,29 +18,31 @@ public class ItemController {
 	@Autowired
 	private ItemServise itemService;
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin
 	@GetMapping("/items")
 	public List<Item> getAllItems(){
 		return itemService.getAllItems();
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin
 	@GetMapping ("/items/{id}")
 	public Optional<Item> getItem(@PathVariable int id){
 		return itemService.getItem(id);
 	}
 
+	@CrossOrigin
 	@RequestMapping (method=RequestMethod.POST, value="/items")
 	public void addItem(@RequestBody Item item) {
 		itemService.addItem(item);
 	}
-	
+
+	@CrossOrigin
 	@RequestMapping (method=RequestMethod.PUT, value="/items/{id}")
 	public void updateItem(@RequestBody Item item, @PathVariable int id) {
 		itemService.updateItem(id, item);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin
 	@RequestMapping (method=RequestMethod.DELETE, value="/items/{id}")
 	public void deleteItem(@PathVariable int id) {
 		itemService.deleteItem(id);
